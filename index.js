@@ -3,8 +3,28 @@ const express = require('express')
 
 let app = express()
 
+const mysql = require("mysql")
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "A valid password goes here",
+    database: "database_name"
+})
+
+connection.connect((err) => {
+    if (err) console.error(err)
+    else console.log("Successfully Connected to the database")
+})
+
 app.get('/', (req, res) => {
-    res.json({"description" : "Here goes json 1"})
+    connection.query("SELECT * FROM food",
+    (err, results) => {
+        console.log(results)
+        res.json(results)
+    }
+    )
 })
 
 app.get('/fruits', (req, res) => {
