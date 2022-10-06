@@ -1,9 +1,8 @@
 const PORT = 8000
 const express = require('express')
+const mysql = require("mysql")
 
 let app = express()
-
-const mysql = require("mysql")
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -18,20 +17,27 @@ connection.connect((err) => {
     else console.log("Successfully Connected to the database")
 })
 
-app.get('/', (req, res) => {
-    connection.query("SELECT * FROM food",
+app.get('/fruits', (req, res) => {
+    connection.query("SELECT * FROM fruits",
     (err, results) => {
-        if (err) console.log("Sorry not working")
-        else res.json(results)
+        res.json(results)
     })
 })
 
-app.get('/fruits', (req, res) => {
-    res.json({"description" : "Here goes json 2"})
+app.get('/vegetables', (req, res) => {
+    connection.query("SELECT * FROM vegetables",
+    (err, results) => {
+        res.json(results)
+    })
 })
 
-app.get('/vegetables', (req, res) => {
-    res.json({"description" : "Here goes json 3"})
+app.get('/frozen-veg', (req, res) => {
+    connection.query("SELECT * FROM frozen-veg",
+    (err, results) => {
+        res.json(results)
+    })
 })
+
+app.get('/')
 
 app.listen(PORT, () => console.log(`listening to requests on port ${PORT}`))
