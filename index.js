@@ -38,6 +38,25 @@ app.get('/frozen-veg', (req, res) => {
     })
 })
 
-app.get('/')
+app.get('/exotic', (req, res) => {
+    connection.query("SELECT * FROM exotic", 
+    (err, results) => {
+        res.json(results)
+    })
+})
+
+app.get('/organic', (req, res) => {
+    connection.query("SELECT * FROM organic", 
+    (err, results) => {
+        res.json(results)
+    })
+})
+
+app.get('/freshly-cut', (req, res) => {
+    connection.query("SELECT * FROM freshly-cut", 
+    (err, results) => {
+        res.json(results)
+    })
+})
 
 app.listen(PORT, () => console.log(`listening to requests on port ${PORT}`))
