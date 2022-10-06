@@ -21,10 +21,9 @@ connection.connect((err) => {
 app.get('/', (req, res) => {
     connection.query("SELECT * FROM food",
     (err, results) => {
-        console.log(results)
-        res.json(results)
-    }
-    )
+        if (err) console.log("Sorry not working")
+        else res.json(results)
+    })
 })
 
 app.get('/fruits', (req, res) => {
