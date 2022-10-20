@@ -1,0 +1,10 @@
+{
+    "vegetables": [
+        {
+            "name": "tomato",
+            "image": "https://media.istockphoto.com/photos/tomato-isolated-on-white-background-picture-id466175630?k=20&m=466175630&s=612x612&w=0&h=TDtEkj1T8-zyM0umkND_I1e9OyO7CZj4_irW-j1GrPg=",
+            "weight": 500,
+            "price": 35
+        }
+    ]
+}
