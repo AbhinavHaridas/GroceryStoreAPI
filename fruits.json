@@ -21,7 +21,7 @@
       {
         "name" : "Pineapple",
         "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Pineapple_and_cross_section.jpg/286px-Pineapple_and_cross_section.jpg",
-        "weight": "500g",
+        "weight": 500,
         "price" : 200
       }
     ]
