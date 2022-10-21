@@ -1,0 +1,10 @@
+{
+    "exotic": [
+        {
+            "name" : "Mexican Sour Ghekin",
+            "image" : "https://thumbs.dreamstime.com/b/mexican-sour-gherkin-white-background-isolated-226334368.jpg",
+            "weight": 500,
+            "price" : 35
+        }
+    ]
+}
