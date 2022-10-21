@@ -5,6 +5,54 @@
             "image": "https://thumbs.dreamstime.com/b/whole-cut-apples-white-background-225243689.jpg",
             "weight": 600,
             "price": 60
+        },
+        {
+            "name": "Freshly Cut Bananas",
+            "image": "https://thumbs.dreamstime.com/b/peeled-banana-cut-white-background-isolated-peeled-banana-cut-white-background-isolated-white-background-isolated-118296405.jpg",
+            "weight": 400,
+            "price": 50
+        },
+        {
+            "name": "Freshly Cut Oranges",
+            "image": "https://media.istockphoto.com/photos/half-of-orage-fruit-slice-isolated-on-white-picture-id950915068?k=20&m=950915068&s=612x612&w=0&h=id2I2hIlO0Keo9OweoUPyWqAqOIAyu5PNBhTXjPP63U=",
+            "weight": 300,
+            "price": 36
+        },
+        {
+            "name": "Freshly Cut Mangoes",
+            "image": "https://img.freepik.com/premium-photo/ripe-yellow-mango-with-cut-half-green-leaf-isolated-white-background_252965-516.jpg",
+            "weight": 400,
+            "price": 50
+        },
+        {
+            "name": "Freshly Cut Pinapples",
+            "image": "https://previews.123rf.com/images/bedolaga/bedolaga1101/bedolaga110100054/8775634-fresh-slice-pineapple-on-white-background.jpg",
+            "weight": 500,
+            "price": 49
+        },
+        {
+            "name": "Freshly Cut Green-Apples",
+            "image": "https://img.freepik.com/premium-photo/fresh-green-apple-with-cut-half-sliced-green-leaf-isolated-white-background_264757-2.jpg",
+            "weight": 400,
+            "price": 30
+        },
+        {
+            "name": "Freshly Cut Cucumbers",
+            "image": "https://worstroom.com/wp-content/uploads/2020/08/how-long-do-cucumbers-last-after-being-cut.jpg",
+            "weight": 400,
+            "price": 55
+        },
+        {
+            "name": "Freshly Cut Onions",
+            "image": "https://media.istockphoto.com/photos/diced-red-onion-picture-id490970562?k=20&m=490970562&s=612x612&w=0&h=kKJDrjOWdOBagloWMmCv8eCbzs0zGy0Uyr9up-xsT64=",
+            "weight": 500,
+            "price": 140
+        },
+        {
+            "name": "Freshly Cut Chickoo",
+            "image": "https://cdn.shopify.com/s/files/1/0048/6110/0145/products/Picture1_41eb9ce6-403d-4063-a346-d8f8385fb7ab_2048x2048.jpg?v=1621619172",
+            "weight": 400,
+            "price": 80
         }
     ]
 }
