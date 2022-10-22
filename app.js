@@ -8,6 +8,31 @@ const organic = require("./data/organic.json")
 const freshlycut = require("./data/freshlycut.json")
 const cors = require("cors")
 
+//Importing modules
+const mysql = require("mysql2");
+const connection = require("./database");
+
+//Defining routes
+const customerRouter = require("./routes/customers");
+const offerRouter = require("./routes/offers");
+const categoryRouter = require("./routes/categories");
+const feedbackRouter = require("./routes/feedbacks");
+const paymentRouter = require("./routes/payments");
+const inventoryRouter = require("./routes/inventories");
+const orderRouter = require("./routes/orders");
+const dealRouter = require("./routes/deals");
+
+
+//Using routes
+app.use("/customers", customerRouter);
+app.use("/offers", offerRouter);
+app.use("/categories", categoryRouter);
+app.use("/feedbacks", feedbackRouter);
+app.use("/payments", paymentRouter);
+app.use("/inventories", inventoryRouter);
+app.use("/orders", orderRouter);
+app.use("/deals", dealRouter);
+
 const corsOptions ={
    origin:'*', 
    credentials:true,            
