@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2022 at 06:40 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Oct 22, 2022 at 10:22 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `grocery store`
+-- Database: `grocery_store`
 --
 
 -- --------------------------------------------------------
@@ -57,12 +57,21 @@ CREATE TABLE `category_items` (
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `contact` int(11) NOT NULL,
+  `contact` int(12) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL COMMENT 'city from drop down'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `contact`, `email`, `address`, `password`, `location`) VALUES
+(1, 'Shaun Dsouza', 111111111, 'bungee@bungee.com', 'dfjdoafhoheffsdfd', 'qweerttyy', 'Mumbai'),
+(2, 'Abhinav Haridas', 222222222, 'asdf@asdf.com', 'aiuehwuhepqe', 'werrererer', 'Pune'),
+(3, 'Himnish Irani', 2333333, 'ghr@ghr.com', 'ddfsad', 'asdfsdfee', 'Paris');
 
 -- --------------------------------------------------------
 
@@ -87,6 +96,15 @@ CREATE TABLE `deal_types` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL COMMENT 'type like deals,bestsellers,festive deals etc'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `deal_types`
+--
+
+INSERT INTO `deal_types` (`id`, `title`) VALUES
+(1, 'bestsellers'),
+(2, 'festive deals'),
+(3, 'end of season ');
 
 -- --------------------------------------------------------
 
@@ -264,7 +282,7 @@ ALTER TABLE `category_items`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `deal_items`
@@ -276,7 +294,7 @@ ALTER TABLE `deal_items`
 -- AUTO_INCREMENT for table `deal_types`
 --
 ALTER TABLE `deal_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `feedbacks`
