@@ -1,11 +1,18 @@
 //Defining the Port
 const PORT = 8000;
+const cors = require("cors");
 
 //Importing modules
 const express = require("express");
-const mysql = require("mysql");
-const connection = require("./database");
 let app = express();
+
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            
+    optionSuccessStatus:200,
+ }
+ 
+ app.use(cors(corsOptions)) 
 
 //Defining routes
 const customerRouter = require("./routes/customers");
