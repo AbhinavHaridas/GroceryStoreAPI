@@ -18,6 +18,17 @@ router.get("/get_deal_types", (req, res) => {
   });
 });
 
+router.get("/get_specific_deal_items", (req, res) => {
+  const deal_type_id = req.query.deal_type_id;
+  connection.query(
+    "SELECT `di`.`image` AS image, `di`.`description` AS description FROM deal_items `di` INNER JOIN deal_types `dt` ON `dt`.`id` = `di`.`deal_type_id` AND `dt`.`id` =" +
+      deal_type_id,
+    (err, results) => {
+      res.json(results);
+    }
+  );
+});
+
 
 
 module.exports = router;
