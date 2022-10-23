@@ -1,62 +1,38 @@
-const PORT = 8000
-const express = require('express')
-const mysql = require("mysql")
+//Defining the Port
+const PORT = 8000;
+const cors = require("cors");
 
-let app = express()
+//Importing modules
+const express = require("express");
+let app = express();
 
-const connection = mysql.createConnection({
-    host: "localhost",
-    port: "3306",
-    user: "root",
-    password: "A valid password goes here",
-    database: "database_name"
-})
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            
+    optionSuccessStatus:200,
+ }
+ 
+ app.use(cors(corsOptions)) 
 
-connection.connect((err) => {
-    if (err) console.error(err)
-    else console.log("Successfully Connected to the database")
-})
+//Defining routes
+const customerRouter = require("./routes/customers");
+const offerRouter = require("./routes/offers");
+const categoryRouter = require("./routes/categories");
+const feedbackRouter = require("./routes/feedbacks");
+const paymentRouter = require("./routes/payments");
+const inventoryRouter = require("./routes/inventories");
+const orderRouter = require("./routes/orders");
+const dealRouter = require("./routes/deals");
 
-app.get('/fruits', (req, res) => {
-    connection.query("SELECT * FROM fruits",
-    (err, results) => {
-        res.json(results)
-    })
-})
 
-app.get('/vegetables', (req, res) => {
-    connection.query("SELECT * FROM vegetables",
-    (err, results) => {
-        res.json(results)
-    })
-})
+//Using routes
+app.use("/customers", customerRouter);
+app.use("/offers", offerRouter);
+app.use("/categories", categoryRouter);
+app.use("/feedbacks", feedbackRouter);
+app.use("/payments", paymentRouter);
+app.use("/inventories", inventoryRouter);
+app.use("/orders", orderRouter);
+app.use("/deals", dealRouter);
 
-app.get('/frozen-veg', (req, res) => {
-    connection.query("SELECT * FROM frozen-veg",
-    (err, results) => {
-        res.json(results)
-    })
-})
-
-app.get('/exotic', (req, res) => {
-    connection.query("SELECT * FROM exotic", 
-    (err, results) => {
-        res.json(results)
-    })
-})
-
-app.get('/organic', (req, res) => {
-    connection.query("SELECT * FROM organic", 
-    (err, results) => {
-        res.json(results)
-    })
-})
-
-app.get('/freshly-cut', (req, res) => {
-    connection.query("SELECT * FROM freshly-cut", 
-    (err, results) => {
-        res.json(results)
-    })
-})
-
-app.listen(PORT, () => console.log(`listening to requests on port ${PORT}`))
+app.listen(PORT, () => console.log(`listening to requests on port ${PORT}`));

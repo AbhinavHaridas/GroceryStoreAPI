@@ -1,0 +1,58 @@
+{
+    "fruits" : [
+      {
+        "name" : "Apple",
+        "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/265px-Red_Apple.jpg",
+        "weight": 500,
+        "price" : 35
+      },
+      {
+        "name" : "Banana",
+        "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Bananas_white_background_DS.jpg/320px-Bananas_white_background_DS.jpg",
+        "weight": 500,
+        "price" : 12
+      },
+      {
+        "name" : "Grapes",
+        "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Table_grapes_on_white.jpg/320px-Table_grapes_on_white.jpg",
+        "weight": 500,
+        "price" : 45
+      },
+      {
+        "name" : "Pineapple",
+        "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Pineapple_and_cross_section.jpg/286px-Pineapple_and_cross_section.jpg",
+        "weight": 500,
+        "price" : 200
+      },
+      {
+        "name": "Pomogranades",
+        "image": "https://previews.123rf.com/images/volff/volff1605/volff160500024/57185292-pomegranate-fruit-with-green-leaves-on-the-white-background-.jpg",
+        "weight": 300,
+        "price": 100
+      }, 
+      {
+        "name": "Chickoo",
+        "image": "https://t4.ftcdn.net/jpg/05/32/38/25/360_F_532382508_PorkAi75GrmASHqcSPLEWJ3rGQQasQlV.jpg",
+        "weight": 450,
+        "price": 70
+      },
+      {
+        "name": "Green Apple",
+        "image": "https://healthiersteps.com/wp-content/uploads/2021/12/green-apple-benefits.jpeg",
+        "weight": 320,
+        "price": 60
+      }, 
+      {
+        "name": "Jackfruit",
+        "image": "https://thumbs.dreamstime.com/b/jackfruit-isolated-white-background-jackfruit-isolated-white-background-131350927.jpg",
+        "weight": 800,
+        "price": 50
+      },
+      {
+        "name": "Dragon Fruit",
+        "image": "https://img.freepik.com/premium-photo/dragon-fruit-white-background_55883-8755.jpg",
+        "weight": 700,
+        "price": 60
+      }
+    ]
+}
