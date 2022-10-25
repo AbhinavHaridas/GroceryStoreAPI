@@ -46,6 +46,6 @@ app.get('/freshlycut', (req, res) => {
     console.log(freshlycut)
 })
 
-app.listen(5000, () => {
-    console.log("listening to requests in port 5000");
+app.listen(8000, () => {
+    console.log("listening to requests in port 8000");
 })
