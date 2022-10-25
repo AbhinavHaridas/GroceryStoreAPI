@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2022 at 10:59 AM
+-- Generation Time: Oct 25, 2022 at 07:13 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -115,7 +115,7 @@ INSERT INTO `category_items` (`id`, `category_id`, `name`, `price`, `image`, `qu
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `contact` int(12) NOT NULL,
+  `contact` varchar(12) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -127,10 +127,10 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `contact`, `email`, `address`, `password`, `location`) VALUES
-(1, 'Shaun Dsouza', 111111111, 'bungee@bungee.com', 'Colaba', 'qweerttyy', 'Fort'),
-(2, 'Abhinav Haridas', 222222222, 'asdf@asdf.com', 'Bandra Bandstand', 'abhinav123', 'Bandra'),
-(3, 'Himnish Israni', 2333333, 'ghr@ghr.com', 'Dadar Flower Market', 'qwerty1234', 'Dadar'),
-(4, 'Kaushal Poojary', 913766878, 'wes@wes.ac.in', 'Chattogram Rikshaw Stand', 'mushfiqur', 'Dhaka');
+(1, 'Shaun Dsouza', '111111111', 'bungee@bungee.com', 'Colaba', 'qweerttyy', 'Fort'),
+(2, 'Abhinav Haridas', '1234567891', 'asdf@asdf.com', 'Bandra Bandstand', 'abhinav123', 'Bandra'),
+(3, 'Himnish Israni', '2333333', 'ghr@ghr.com', 'Dadar Flower Market', 'qwerty1234', 'Dadar'),
+(4, 'Kaushal Poojary', '913766878', 'wes@wes.ac.in', 'Chattogram Rikshaw Stand', 'mushfiqur', 'Dhaka');
 
 -- --------------------------------------------------------
 
@@ -193,7 +193,7 @@ CREATE TABLE `feedbacks` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `contact` int(11) NOT NULL,
+  `contact` varchar(12) NOT NULL,
   `email` varchar(255) NOT NULL,
   `reason` varchar(255) NOT NULL COMMENT 'input from dropdown',
   `description` varchar(255) NOT NULL
@@ -204,7 +204,7 @@ CREATE TABLE `feedbacks` (
 --
 
 INSERT INTO `feedbacks` (`id`, `customer_id`, `name`, `contact`, `email`, `reason`, `description`) VALUES
-(1, 1, 'Shaun Dsouza', 1212121212, 'shaun@shaun.com', 'Feedback', 'The groceries were delivered at the right time.');
+(1, 1, 'Shaun Dsouza', '1212121212', 'shaun@shaun.com', 'Feedback', 'The groceries were delivered at the right time.');
 
 -- --------------------------------------------------------
 
@@ -313,7 +313,7 @@ INSERT INTO `order_items` (`id`, `order_id`, `category_item_id`, `quantity`) VAL
 CREATE TABLE `payment_details` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `card_number` int(11) NOT NULL,
+  `card_number` varchar(12) NOT NULL,
   `card_holder_name` varchar(255) NOT NULL,
   `card_expiry_date` date NOT NULL,
   `cvv` int(4) NOT NULL,
@@ -325,7 +325,7 @@ CREATE TABLE `payment_details` (
 --
 
 INSERT INTO `payment_details` (`id`, `customer_id`, `card_number`, `card_holder_name`, `card_expiry_date`, `cvv`, `status`) VALUES
-(1, 2, 123445678, 'Himinish Irani', '2025-10-08', 123, 0);
+(1, 2, '123445678', 'Himinish Irani', '2025-10-08', 123, 0);
 
 --
 -- Indexes for dumped tables
