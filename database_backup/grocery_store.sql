@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 07:13 AM
+-- Generation Time: Oct 25, 2022 at 10:50 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `grocery_store`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `category_item_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `customer_id`, `category_item_id`, `quantity`) VALUES
+(1, 1, 2, 1),
+(3, 1, 5, 1),
+(4, 1, 3, 1),
+(5, 2, 3, 1),
+(6, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -332,6 +356,12 @@ INSERT INTO `payment_details` (`id`, `customer_id`, `card_number`, `card_holder_
 --
 
 --
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -400,6 +430,12 @@ ALTER TABLE `payment_details`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `categories`
