@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 10:50 PM
+-- Generation Time: Oct 26, 2022 at 02:33 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -154,7 +154,8 @@ INSERT INTO `customers` (`id`, `name`, `contact`, `email`, `address`, `password`
 (1, 'Shaun Dsouza', '111111111', 'bungee@bungee.com', 'Colaba', 'qweerttyy', 'Fort'),
 (2, 'Abhinav Haridas', '1234567891', 'asdf@asdf.com', 'Bandra Bandstand', 'abhinav123', 'Bandra'),
 (3, 'Himnish Israni', '2333333', 'ghr@ghr.com', 'Dadar Flower Market', 'qwerty1234', 'Dadar'),
-(4, 'Kaushal Poojary', '913766878', 'wes@wes.ac.in', 'Chattogram Rikshaw Stand', 'mushfiqur', 'Dhaka');
+(4, 'Kaushal Poojary', '913766878', 'wes@wes.ac.in', 'Chattogram Rikshaw Stand', 'mushfiqur', 'Dhaka'),
+(5, 'Babar Azam', '8122345235', '2020.babar.azambwe@trophless.com', 'Rawalpindi', 'U2FsdGVkX19zp3LrFKzRqoZZKzcYOD55roxAlYyNtGE=', 'Pakistan');
 
 -- --------------------------------------------------------
 
@@ -228,7 +229,8 @@ CREATE TABLE `feedbacks` (
 --
 
 INSERT INTO `feedbacks` (`id`, `customer_id`, `name`, `contact`, `email`, `reason`, `description`) VALUES
-(1, 1, 'Shaun Dsouza', '1212121212', 'shaun@shaun.com', 'Feedback', 'The groceries were delivered at the right time.');
+(1, 1, 'Shaun Dsouza', '1212121212', 'shaun@shaun.com', 'Feedback', 'The groceries were delivered at the right time.'),
+(4, 2, 'Kaushal Poojary', '12345677899', 'kaushalpoojary@gmail.com', 'Complaint', 'te a complaint letter, you can start with the sender\'s address followed by the date, the receiver\'s address, the subject, salutation, body of the letter, complimentary closing, signature and name in blo');
 
 -- --------------------------------------------------------
 
@@ -453,7 +455,7 @@ ALTER TABLE `category_items`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `deal_items`
@@ -471,7 +473,7 @@ ALTER TABLE `deal_types`
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inventories`
