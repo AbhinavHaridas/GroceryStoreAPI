@@ -105,7 +105,30 @@ router.post("/update_cart_quantity", (req, res) => {
       res.json("Quantity updated");
     }
   });
-  // console.log(req.body);
+});
+
+router.get("/fetch_cart_items", (req, res) => {
+  const customer_id = req.query.customer_id;
+  connection.query(
+    "SELECT `ci`.`name` as `name`, `ci`.`price` as `price`,`ci`.`quantity` as `quantity`,`c`.`quantity` as `no_of_items` FROM `carts` `c` INNER JOIN `category_items` `ci` ON `c`.`category_item_id` = `ci`.`id`  AND `c`.`customer_id` =" +
+      customer_id,
+    (err, results) => {
+      res.json(results);
+    }
+  );
+});
+
+router.get("/delete_cart_item", (req, res) => {
+  connection.query(
+    "DELETE FROM `carts` WHERE `quantity` = 0",
+    (err, results) => {
+      if (err || results.affectedRows == 0) {
+        res.json("Item not deleted");
+      } else {
+        res.json("Item deleted");
+      }
+    }
+  );
 });
 
 module.exports = router;
