@@ -27,6 +27,7 @@ const paymentRouter = require("./routes/payments");
 const inventoryRouter = require("./routes/inventories");
 const orderRouter = require("./routes/orders");
 const dealRouter = require("./routes/deals");
+const otpRouter = require("./routes/otps");
 
 //Using routes
 app.use("/customers", customerRouter);
@@ -37,5 +38,6 @@ app.use("/payments", paymentRouter);
 app.use("/inventories", inventoryRouter);
 app.use("/orders", orderRouter);
 app.use("/deals", dealRouter);
+app.use("/otps", otpRouter);
 
 app.listen(PORT, () => console.log(`listening to requests on port ${PORT}`));

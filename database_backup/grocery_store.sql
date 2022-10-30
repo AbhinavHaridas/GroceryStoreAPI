@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 02:33 PM
+-- Generation Time: Oct 30, 2022 at 12:28 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -333,6 +333,29 @@ INSERT INTO `order_items` (`id`, `order_id`, `category_item_id`, `quantity`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `otps`
+--
+
+CREATE TABLE `otps` (
+  `id` int(11) NOT NULL,
+  `contact` varchar(12) NOT NULL,
+  `otp` int(11) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT 0 COMMENT '0 = not verified\r\n1 = verified',
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `otps`
+--
+
+INSERT INTO `otps` (`id`, `contact`, `otp`, `status`, `time`) VALUES
+(1, '9137667638', 515772, 1, '2022-10-30 09:07:11'),
+(2, '9137667638', 255082, 0, '2022-10-30 09:17:55'),
+(3, '9137667638', 413054, 1, '2022-10-30 09:19:23');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payment_details`
 --
 
@@ -424,6 +447,12 @@ ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `otps`
+--
+ALTER TABLE `otps`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `payment_details`
 --
 ALTER TABLE `payment_details`
@@ -498,6 +527,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `otps`
+--
+ALTER TABLE `otps`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `payment_details`
