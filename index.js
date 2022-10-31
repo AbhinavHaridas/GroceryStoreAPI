@@ -4,15 +4,19 @@ const cors = require("cors");
 
 //Importing modules
 const express = require("express");
+const bodyParser = require("body-parser");
 let app = express();
 
-const corsOptions ={
-    origin:'*', 
-    credentials:true,            
-    optionSuccessStatus:200,
- }
- 
- app.use(cors(corsOptions)) 
+// Adding middleware
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //Defining routes
 const customerRouter = require("./routes/customers");
@@ -23,7 +27,6 @@ const paymentRouter = require("./routes/payments");
 const inventoryRouter = require("./routes/inventories");
 const orderRouter = require("./routes/orders");
 const dealRouter = require("./routes/deals");
-
 
 //Using routes
 app.use("/customers", customerRouter);
