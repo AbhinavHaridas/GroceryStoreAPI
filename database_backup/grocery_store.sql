@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2022 at 12:28 PM
+-- Generation Time: Oct 31, 2022 at 10:08 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -40,10 +40,10 @@ CREATE TABLE `carts` (
 
 INSERT INTO `carts` (`id`, `customer_id`, `category_item_id`, `quantity`) VALUES
 (1, 1, 2, 1),
-(3, 1, 5, 1),
 (4, 1, 3, 1),
-(5, 2, 3, 1),
-(6, 2, 1, 1);
+(5, 2, 3, 0),
+(6, 2, 1, 1),
+(7, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -151,10 +151,10 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `contact`, `email`, `address`, `password`, `location`) VALUES
-(1, 'Shaun Dsouza', '111111111', 'bungee@bungee.com', 'Colaba', 'qweerttyy', 'Fort'),
+(1, 'Shaun Dsouza', '111111111', 'bungee@bungee.com', 'Colaba', 'U2FsdGVkX19xnl+t+kNr2OIcD/ViZDyKITOveXhX/yg=', 'Fort'),
 (2, 'Abhinav Haridas', '1234567891', 'asdf@asdf.com', 'Bandra Bandstand', 'abhinav123', 'Bandra'),
 (3, 'Himnish Israni', '2333333', 'ghr@ghr.com', 'Dadar Flower Market', 'qwerty1234', 'Dadar'),
-(4, 'Kaushal Poojary', '913766878', 'wes@wes.ac.in', 'Chattogram Rikshaw Stand', 'mushfiqur', 'Dhaka'),
+(4, 'Kaushal Poojary', '913766878', 'wes@wes.ac.in', 'Chattogram Rikshaw Stand', 'U2FsdGVkX1+B2ghYLlhv6iz+6cA+DT00wwQx+EA0NJs=', 'Dhaka'),
 (5, 'Babar Azam', '8122345235', '2020.babar.azambwe@trophless.com', 'Rawalpindi', 'U2FsdGVkX19zp3LrFKzRqoZZKzcYOD55roxAlYyNtGE=', 'Pakistan');
 
 -- --------------------------------------------------------
@@ -328,7 +328,8 @@ CREATE TABLE `order_items` (
 
 INSERT INTO `order_items` (`id`, `order_id`, `category_item_id`, `quantity`) VALUES
 (1, 1, 1, 5),
-(2, 1, 2, 2);
+(2, 1, 2, 2),
+(3, 4, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -350,8 +351,10 @@ CREATE TABLE `otps` (
 
 INSERT INTO `otps` (`id`, `contact`, `otp`, `status`, `time`) VALUES
 (1, '9137667638', 515772, 1, '2022-10-30 09:07:11'),
-(2, '9137667638', 255082, 0, '2022-10-30 09:17:55'),
-(3, '9137667638', 413054, 1, '2022-10-30 09:19:23');
+(2, '9137667638', 255082, 1, '2022-10-30 09:17:55'),
+(3, '9137667638', 413054, 1, '2022-10-30 09:19:23'),
+(4, '9137667638', 461587, 0, '2022-10-30 14:02:04'),
+(5, '7977854846', 209038, 0, '2022-10-30 14:05:37');
 
 -- --------------------------------------------------------
 
@@ -362,11 +365,11 @@ INSERT INTO `otps` (`id`, `contact`, `otp`, `status`, `time`) VALUES
 CREATE TABLE `payment_details` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `card_number` varchar(12) NOT NULL,
+  `card_number` varchar(255) NOT NULL,
   `card_holder_name` varchar(255) NOT NULL,
   `card_expiry_date` date NOT NULL,
-  `cvv` int(4) NOT NULL,
-  `status` int(2) NOT NULL
+  `cvv` varchar(255) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -374,7 +377,8 @@ CREATE TABLE `payment_details` (
 --
 
 INSERT INTO `payment_details` (`id`, `customer_id`, `card_number`, `card_holder_name`, `card_expiry_date`, `cvv`, `status`) VALUES
-(1, 2, '123445678', 'Himinish Irani', '2025-10-08', 123, 0);
+(1, 2, '123445678', 'Himinish Irani', '2025-10-08', '123', 0),
+(7, 3, 'U2FsdGVkX1/Sc/SrzJ+IlNjsSClJ6PE1iifb6eF9py8=', 'Robert Lewandowski', '2020-03-12', 'U2FsdGVkX18gkn427b+W+0Xz4RFH3N2PdFn5z6nNww0=', 1);
 
 --
 -- Indexes for dumped tables
@@ -466,7 +470,7 @@ ALTER TABLE `payment_details`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -526,19 +530,19 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `otps`
 --
 ALTER TABLE `otps`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `payment_details`
 --
 ALTER TABLE `payment_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

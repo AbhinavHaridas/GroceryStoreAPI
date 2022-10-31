@@ -49,7 +49,12 @@ router.get("/get_total_revenue", (req, res) => {
   connection.query(
     "SELECT SUM(order_amount) AS total_revenue FROM orders WHERE order_status = 1",
     (err, results) => {
-      res.json(results);
+      if (results.total_revenue == null) {
+        res.json("No orders made yet");
+      }
+      else {
+        res.json(results);
+      }
     }
   );
 });
