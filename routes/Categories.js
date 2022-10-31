@@ -107,6 +107,8 @@ router.post("/update_cart_quantity", (req, res) => {
   });
 });
 
+// Fetch items from the cart
+// http://localhost:8000/categories/fetch_cart_items?customer_id={Enter customer_id here}
 router.get("/fetch_cart_items", (req, res) => {
   const customer_id = req.query.customer_id;
   connection.query(
@@ -118,9 +120,17 @@ router.get("/fetch_cart_items", (req, res) => {
   );
 });
 
+// Delete the item from the cart
+// http://localhost:8000/categories/delete_cart_item
 router.get("/delete_cart_item", (req, res) => {
+  const customer_id = req.query.customer_id;
+  const item_id = req.query.item_id;
   connection.query(
-    "DELETE FROM `carts` WHERE `quantity` = 0",
+    "DELETE FROM carts WHERE customer_id = " +
+      customer_id +
+      " AND category_item_id = " +
+      item_id +
+      " AND quantity = 0",
     (err, results) => {
       if (err || results.affectedRows == 0) {
         res.json("Item not deleted");
