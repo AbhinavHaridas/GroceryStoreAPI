@@ -6,13 +6,16 @@ const cors = require("cors");
 
 //Importing modules
 const express = require("express");
+const bodyParser = require("body-parser");
 let app = express();
 
+// Adding middleware
 const corsOptions = {
     origin: "*",
     credentials: true,
     optionSuccessStatus: 200,
 };
+
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -28,6 +31,7 @@ const inventoryRouter = require("./routes/inventories");
 const orderRouter = require("./routes/orders");
 const dealRouter = require("./routes/deals");
 const otpRouter = require("./routes/otps");
+
 
 //Using routes
 app.use("/customers", customerRouter);
