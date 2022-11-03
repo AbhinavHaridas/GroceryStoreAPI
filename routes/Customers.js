@@ -62,7 +62,7 @@ router.post("/signin", (req, res) => {
     const contact = req.body.contact;
     const password = req.body.password;
     // Fetching the password from the database of the respective user
-    connection.query("SELECT `c`.`password` AS `password` FROM customers `c` WHERE `c`.`contact` = ?", [contact], (err, results) => {
+    connection.query("SELECT `c`.`password` AS `password`,`c`.`id` AS `id` FROM customers `c` WHERE `c`.`contact` = ?", [contact], (err, results) => {
         // If the user doesn't exist
         if (err || results.length == 0) {
             res.json("Account doesn't exist");
@@ -71,7 +71,7 @@ router.post("/signin", (req, res) => {
             // If the user exists, then the password is decrypted and compared with the password entered by the user
             const passwordCheck = decryptWithAES(results[0].password);
             if(password === passwordCheck) {
-                res.json("Login Successful");
+                res.json({message: "Login successful", id: results[0].id});
             }
             else {
                 res.json("Incorrect Password");
