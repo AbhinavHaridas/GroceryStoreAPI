@@ -1,6 +1,7 @@
 const express = require("express");
 const connection = require("../database");
 const router = express.Router();
+const stripe = require('stripe')('sk_test_51M0IGfSJ9iZKWHXhhksX83P8pSqHTz0oWKnI1rczzUrTXDx9OsES926WXODfpqEbmCHPjBHyBkIiib3LpBkrAwan0022fJsWpF');
 const { encryptWithAES, decryptWithAES } = require("../passwordProtection");
 
 //Get All payments
@@ -53,6 +54,22 @@ router.get("/update_payment_status", (req, res) => {
       }
     }
   );
+})
+
+router.post('/makepayment', (req, res) => {
+  const amount = req.body.amount;
+  const description = req.body.description;
+  stripe.charges.create({
+    amount: amount * 100, //Required
+    currency: "inr", //Required
+    source: "tok_amex", //optional id of a card
+    description: description
+  }, function(err, charge) {
+    if(err){
+    } else {
+        res.status(200).send({message:"charge success", id: charge.id})
+    }
+});
 })
 
 module.exports = router;
