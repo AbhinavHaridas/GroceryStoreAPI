@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2022 at 10:59 AM
+-- Generation Time: Oct 31, 2022 at 10:08 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `grocery_store`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `category_item_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `customer_id`, `category_item_id`, `quantity`) VALUES
+(1, 1, 2, 1),
+(4, 1, 3, 1),
+(5, 2, 3, 0),
+(6, 2, 1, 1),
+(7, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -115,7 +139,7 @@ INSERT INTO `category_items` (`id`, `category_id`, `name`, `price`, `image`, `qu
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `contact` int(12) NOT NULL,
+  `contact` varchar(12) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -127,10 +151,11 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `contact`, `email`, `address`, `password`, `location`) VALUES
-(1, 'Shaun Dsouza', 111111111, 'bungee@bungee.com', 'Colaba', 'qweerttyy', 'Fort'),
-(2, 'Abhinav Haridas', 222222222, 'asdf@asdf.com', 'Bandra Bandstand', 'abhinav123', 'Bandra'),
-(3, 'Himnish Israni', 2333333, 'ghr@ghr.com', 'Dadar Flower Market', 'qwerty1234', 'Dadar'),
-(4, 'Kaushal Poojary', 913766878, 'wes@wes.ac.in', 'Chattogram Rikshaw Stand', 'mushfiqur', 'Dhaka');
+(1, 'Shaun Dsouza', '111111111', 'bungee@bungee.com', 'Colaba', 'U2FsdGVkX19xnl+t+kNr2OIcD/ViZDyKITOveXhX/yg=', 'Fort'),
+(2, 'Abhinav Haridas', '1234567891', 'asdf@asdf.com', 'Bandra Bandstand', 'abhinav123', 'Bandra'),
+(3, 'Himnish Israni', '2333333', 'ghr@ghr.com', 'Dadar Flower Market', 'qwerty1234', 'Dadar'),
+(4, 'Kaushal Poojary', '913766878', 'wes@wes.ac.in', 'Chattogram Rikshaw Stand', 'U2FsdGVkX1+B2ghYLlhv6iz+6cA+DT00wwQx+EA0NJs=', 'Dhaka'),
+(5, 'Babar Azam', '8122345235', '2020.babar.azambwe@trophless.com', 'Rawalpindi', 'U2FsdGVkX19zp3LrFKzRqoZZKzcYOD55roxAlYyNtGE=', 'Pakistan');
 
 -- --------------------------------------------------------
 
@@ -193,7 +218,7 @@ CREATE TABLE `feedbacks` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `contact` int(11) NOT NULL,
+  `contact` varchar(12) NOT NULL,
   `email` varchar(255) NOT NULL,
   `reason` varchar(255) NOT NULL COMMENT 'input from dropdown',
   `description` varchar(255) NOT NULL
@@ -204,7 +229,8 @@ CREATE TABLE `feedbacks` (
 --
 
 INSERT INTO `feedbacks` (`id`, `customer_id`, `name`, `contact`, `email`, `reason`, `description`) VALUES
-(1, 1, 'Shaun Dsouza', 1212121212, 'shaun@shaun.com', 'Feedback', 'The groceries were delivered at the right time.');
+(1, 1, 'Shaun Dsouza', '1212121212', 'shaun@shaun.com', 'Feedback', 'The groceries were delivered at the right time.'),
+(4, 2, 'Kaushal Poojary', '12345677899', 'kaushalpoojary@gmail.com', 'Complaint', 'te a complaint letter, you can start with the sender\'s address followed by the date, the receiver\'s address, the subject, salutation, body of the letter, complimentary closing, signature and name in blo');
 
 -- --------------------------------------------------------
 
@@ -302,7 +328,33 @@ CREATE TABLE `order_items` (
 
 INSERT INTO `order_items` (`id`, `order_id`, `category_item_id`, `quantity`) VALUES
 (1, 1, 1, 5),
-(2, 1, 2, 2);
+(2, 1, 2, 2),
+(3, 4, 4, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `otps`
+--
+
+CREATE TABLE `otps` (
+  `id` int(11) NOT NULL,
+  `contact` varchar(12) NOT NULL,
+  `otp` int(11) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT 0 COMMENT '0 = not verified\r\n1 = verified',
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `otps`
+--
+
+INSERT INTO `otps` (`id`, `contact`, `otp`, `status`, `time`) VALUES
+(1, '9137667638', 515772, 1, '2022-10-30 09:07:11'),
+(2, '9137667638', 255082, 1, '2022-10-30 09:17:55'),
+(3, '9137667638', 413054, 1, '2022-10-30 09:19:23'),
+(4, '9137667638', 461587, 0, '2022-10-30 14:02:04'),
+(5, '7977854846', 209038, 0, '2022-10-30 14:05:37');
 
 -- --------------------------------------------------------
 
@@ -313,11 +365,11 @@ INSERT INTO `order_items` (`id`, `order_id`, `category_item_id`, `quantity`) VAL
 CREATE TABLE `payment_details` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `card_number` int(11) NOT NULL,
+  `card_number` varchar(255) NOT NULL,
   `card_holder_name` varchar(255) NOT NULL,
   `card_expiry_date` date NOT NULL,
-  `cvv` int(4) NOT NULL,
-  `status` int(2) NOT NULL
+  `cvv` varchar(255) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -325,11 +377,18 @@ CREATE TABLE `payment_details` (
 --
 
 INSERT INTO `payment_details` (`id`, `customer_id`, `card_number`, `card_holder_name`, `card_expiry_date`, `cvv`, `status`) VALUES
-(1, 2, 123445678, 'Himinish Irani', '2025-10-08', 123, 0);
+(1, 2, '123445678', 'Himinish Irani', '2025-10-08', '123', 0),
+(7, 3, 'U2FsdGVkX1/Sc/SrzJ+IlNjsSClJ6PE1iifb6eF9py8=', 'Robert Lewandowski', '2020-03-12', 'U2FsdGVkX18gkn427b+W+0Xz4RFH3N2PdFn5z6nNww0=', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `categories`
@@ -392,6 +451,12 @@ ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `otps`
+--
+ALTER TABLE `otps`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `payment_details`
 --
 ALTER TABLE `payment_details`
@@ -400,6 +465,12 @@ ALTER TABLE `payment_details`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -417,7 +488,7 @@ ALTER TABLE `category_items`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `deal_items`
@@ -435,7 +506,7 @@ ALTER TABLE `deal_types`
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inventories`
@@ -459,13 +530,19 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `otps`
+--
+ALTER TABLE `otps`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `payment_details`
 --
 ALTER TABLE `payment_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
